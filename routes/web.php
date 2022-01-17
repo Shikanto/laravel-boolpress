@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::namespace("Admin") //cartella dove sono le rotte del group 
+    ->prefix("admin") // questo per cosa c'è subito dopo lo slash '/'
+    ->name("admin.") // questa per ogni name delle rotte per esempio admin.home
+    ->group(function(){
+        Route::get('/', 'HomeController@index')->name('home');
+        
+        //Route::resource("users", "UserController");
+});
