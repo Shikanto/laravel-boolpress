@@ -15,6 +15,16 @@
                     @endif
 
                     {{ __('Dati Post') }}
+                    @foreach ($postsList as $info_post)
+                    <ul>
+                        <li>{{ $info_post['title']}}</li>
+                        <li>{{ $info_post['subtitle']}}</li>
+                        <li>{{ $info_post['content']}}</li>
+                        <li>{{ $info_post['author']}}</li>
+                        <li>{{ $info_post['category']}}</li>
+                    </ul>
+                     <hr>   
+                    @endforeach
                 </div>
             </div>
         </div>

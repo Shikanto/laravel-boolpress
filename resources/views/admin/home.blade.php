@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Sei sulla pagina home.blade.php nella cartella VIEWS/ADMIND!') }}
+                    {{ __('Sei sulla pagina home.blade.php nella cartella VIEWS/ADMIN!') }}
                 </div>
             </div>
         </div>
