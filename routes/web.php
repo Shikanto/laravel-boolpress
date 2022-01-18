@@ -34,4 +34,4 @@ Route::namespace("Admin") //cartella dove sono le rotte del group
 
 Route::get("{any?}", function() {
     return view("guests.home");
-})->where("any", ".*");
+})->where("any", ".*")->name('home');
