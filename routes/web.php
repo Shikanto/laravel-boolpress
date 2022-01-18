@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::namespace("Admin") //cartella dove sono le rotte del group 
+    ->middleware("auth") // così tutte le rotte nel group sono autenticate
     ->prefix("admin") // questo per cosa c'è subito dopo lo slash '/'
     ->name("admin.") // questa per ogni name delle rotte per esempio admin.home
     ->group(function(){
