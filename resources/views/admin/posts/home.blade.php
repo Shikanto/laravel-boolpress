@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Home - Admin - Posts') }}</div>
+                <div class="card-header">{{ __('Lista Posts') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Sei sulla pagina home.blade.php nella cartella VIEWS/ADMIND!') }}
+                    {{ __('Dati Post') }}
                 </div>
             </div>
         </div>
