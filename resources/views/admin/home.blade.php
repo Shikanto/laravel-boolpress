@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Sei sulla pagina home.blade.php nella cartella VIEWS/ADMIN!') }}
+                    <button><a href="#">Vai a tutti i posts</a></button>
                 </div>
             </div>
         </div>
