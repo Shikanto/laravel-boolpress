@@ -692,10 +692,10 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card mb-3", staticStyle: { "max-width": "540px" } },
+    { staticClass: "card mb-3", staticStyle: { width: "100%" } },
     [
       _c("div", { staticClass: "row g-0" }, [
-        _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "col-md-4 d-flex align-items-center" }, [
           _c("img", {
             staticClass: "img-fluid rounded-start",
             attrs: { src: _vm.post.coverImg, alt: "..." },
@@ -708,9 +708,10 @@ var render = function () {
               _vm._v(_vm._s(_vm.post.title)),
             ]),
             _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v("\n          " + _vm._s(_vm.post.content) + "\n        "),
-            ]),
+            _c("p", {
+              staticClass: "card-text",
+              domProps: { innerHTML: _vm._s(_vm.post.content) },
+            }),
             _vm._v(" "),
             _c("p", { staticClass: "card-text" }, [
               _c("small", { staticClass: "text-muted" }, [
