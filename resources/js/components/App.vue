@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container text-center">
         <h1>{{ helloMsg }}</h1>   
         <Post v-for="post in postsList" :key="post.id" :post="post">
         </Post>

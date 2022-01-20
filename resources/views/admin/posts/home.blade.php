@@ -20,11 +20,11 @@
                     @foreach ($postsList as $info_post)
                     {{ __('Post') }}
                     <ul>
-                        <li>{{ $info_post['title']}}</li>
-                        <li>{{ $info_post['subtitle']}}</li>
-                        <li>{{ $info_post['content']}}</li>
-                        <li>{{ $info_post['author']}}</li>
-                        <li>{{ $info_post['category']}}</li>
+                        <li class="mb-3"><h4 class="mb-2">Titolo: </h4>{{ $info_post['title']}}</li>
+                        <li class="mb-3"><h4 class="mb-2">Sottotitolo: </h4>{{ $info_post['subtitle']}}</li>
+                        <li class="mb-3"><h4 class="mb-2">Contenuti: </h4>{!! $info_post['content'] !!}</li>
+                        <li class="mb-3"><h4 class="mb-2">Autore: </h4>{{ $info_post->user->name}}</li>
+                        {{-- <li class="mb-3"><h4 class="mb-2">Categoria: </h4>{{ $info_post['category']}}</li> --}}
                     </ul>
                     <button class="btn btn-primary"><a class="text-light" href="{{ route('admin.posts.show', $info_post->id)}}">Dettagli Post</a></button>
                     <button class="btn btn-secondary"><a class="text-light" href="{{ route('admin.posts.edit',  $info_post->id )}}">Modifica Post</a></button>

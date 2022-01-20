@@ -20,10 +20,10 @@
             <label for="content" class="form-label">Contenuto Post</label>
             <textarea class="form-control" id="content" rows="5" name="content"></textarea>
         </div>
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label for="author" class="form-label">Autore</label>
             <input type="text" id="author" class="form-control" name="author">
-        </div>
+        </div> --}}
         <div class="mb-3">
             <label for="coverImg" class="form-label">Copertina Post</label>
             <input type="text" id="coverImg" class="form-control" name="coverImg">

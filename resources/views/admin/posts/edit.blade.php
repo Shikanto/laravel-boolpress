@@ -22,13 +22,13 @@
         <div class="mb-3">
             <label for="content" class="form-label">Contenuto Post</label>
             <textarea class="form-control" id="content" rows="5" name="content"
-            value="{{ old('content') ?? $post->content}}">Scrivi il contenuto del post qui...</textarea>
+            value="{{ old('content') ?? $post->content }}"></textarea>
         </div>
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label for="author" class="form-label">Autore</label>
             <input type="text" id="author" class="form-control" name="author"
             value="{{ old('author') ?? $post->author}}">
-        </div>
+        </div> --}}
         <div class="mb-3">
             <label for="coverImg" class="form-label">Copertina Post</label>
             <input type="text" id="coverImg" class="form-control" name="coverImg"

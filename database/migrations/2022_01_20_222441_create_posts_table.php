@@ -18,10 +18,13 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('subtitle')->nullable();
             $table->longtext('content');
-            $table->string('author');
-            $table->string('coverImg')->nullable();
-            $table->string('category');
-            $table->timestamps();
+            $table->string('category')->nullable();
+	        $table->string('coverImg')->default('https://picsum.photos/seed/picsum/500/500');
+	        $table->unsignedBigInteger("author_id");
+            $table->foreign("author_id")
+                ->references("id")
+                ->on("users");
+	        $table->timestamps();
         });
     }
 
@@ -32,6 +35,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_posts');
+        Schema::dropIfExists('posts');
     }
 }

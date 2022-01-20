@@ -657,7 +657,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
+    { staticClass: "container text-center" },
     [
       _c("h1", [_vm._v(_vm._s(_vm.helloMsg))]),
       _vm._v(" "),

@@ -10,9 +10,10 @@
             <div class="card-body py-5">
                 <h2>{{ strtoupper($post['title']) }}</h2>
                 <h4 class="card-title">{{ strtoupper($post['subtitle'])}}</h4>
-                <p class="card-text">{{ $post['content'] }}</p>
-                <h5 class="card-text">{{ $post['author'] }}</h5>
-                <h6 class="card-text text-muted">{{ $post['category'] }}</h6>
+                <p class="card-text">{!! $post['content'] !!}</p>
+                <h5 class="card-text"><span class="text-muted">Written by: </span><br>{{ $post->user->name }}</h5>
+                <h6 class="text-muted">{{ $post['created_at'] }}</h6>
+                {{-- <h6 class="card-text text-muted">{{ $post['category'] }}</h6> --}}
             </div>
             <div class="d-flex justify-content-center border-top border-light pt-4">
                 <form class="mr-3" action="{{ route('admin.posts.edit', $post->id)}}" method="get">

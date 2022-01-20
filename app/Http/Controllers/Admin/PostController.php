@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -40,6 +41,7 @@ class PostController extends Controller
 
         $newPost = new Post();
         $newPost->fill($data);
+        $newPost->author_id = Auth::user()->id;
         $newPost->save();
 
         return redirect()-> route('admin.posts.show', $newPost->id);

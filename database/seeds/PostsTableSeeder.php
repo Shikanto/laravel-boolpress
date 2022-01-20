@@ -17,9 +17,6 @@ class PostsTableSeeder extends Seeder
             $newPost->title = $faker->sentence(6);
             $newPost->subtitle = $faker->sentence(4);
             $newPost->content = $faker->realText(1000);
-            $newPost->author = $faker->firstNameFemale;
-            $newPost->coverImg = $faker->imageUrl(640,480,'food');
-            $newPost->category = $faker->word();
             $newPost->save();
         }
     }

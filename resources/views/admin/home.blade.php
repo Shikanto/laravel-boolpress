@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <button><a href="#">Vai a tutti i posts</a></button>
+                    <button><a href="{{ route('admin.posts.index')}}">Vai a tutti i posts</a></button>
                 </div>
             </div>
         </div>
