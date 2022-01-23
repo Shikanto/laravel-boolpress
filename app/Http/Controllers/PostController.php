@@ -7,7 +7,7 @@ use App\Post;
 class PostController extends Controller
 {
     function index() {
-        $postsList = Post::with("category")->with("user")->get();
+        $postsList = Post::with("category")->with("user")->with("tags")->get();
         return $postsList;
     }
 }

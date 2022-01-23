@@ -164,6 +164,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
@@ -696,7 +703,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card mb-3", staticStyle: { width: "100%" } },
+    { staticClass: "card mb-3 ", staticStyle: { width: "100%" } },
     [
       _c("div", { staticClass: "row g-0" }, [
         _c("div", { staticClass: "col-md-4 d-flex align-items-center" }, [
@@ -706,7 +713,7 @@ var render = function () {
           }),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "col-md-8 " }, [
           _c("div", { staticClass: "card-body" }, [
             _c("h3", { staticClass: "card-title" }, [
               _vm._v(_vm._s(_vm.post.title)),
@@ -728,6 +735,30 @@ var render = function () {
                     _vm._v("Categoria: Sconosciuta"),
                   ]),
                 ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-text" }, [
+              _c("h5", { staticClass: "text-muted mb-2" }, [_vm._v("Tags: ")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex align-items-center justify-content-center mb-3",
+                },
+                _vm._l(_vm.post.tags, function (tag) {
+                  return _c(
+                    "div",
+                    {
+                      key: tag.id,
+                      staticClass:
+                        "badge bg-primary text-white rounded-pill p-2",
+                    },
+                    [_vm._v(_vm._s(tag.name))]
+                  )
+                }),
+                0
+              ),
+            ]),
             _vm._v(" "),
             _c("h5", [_vm._v("Autore: " + _vm._s(_vm.post.user.name))]),
           ]),

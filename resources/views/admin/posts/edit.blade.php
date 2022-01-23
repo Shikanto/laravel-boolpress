@@ -35,10 +35,18 @@
             value="{{ old('coverImg') ?? $post->coverImg}}">
         </div>
         <div class="mb-3">
-            <label for="category" class="form-label">Categoria Post</label>
+            <label class="form-label">Categoria Post</label>
             <select name="category_id" class="form-control">
                 @foreach ($categories as $category)
                     <option value="{{ $category->id}}" @if($category->id === $post->category_id) selected @endif>{{ $category->name }}</option>  
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Tag Post</label>
+            <select name="tags[]" class="form-control" multiple>
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id}}" @if($post->tags->contains($tag)) selected @endif>{{ $tag->name }}</option>  
                 @endforeach
             </select>
         </div>

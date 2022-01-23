@@ -36,6 +36,14 @@
                 @endforeach
             </select>
         </div>
+        <div class="mb-3">
+            <label class="form-label">Tags Post</label>
+            <select name="tags[]" class="form-control" multiple>
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id}}">{{ $tag->name }}</option>  
+                @endforeach
+            </select>
+        </div>
         <div class="d-flex justify-content-center ">
             <button class="btn btn-dark mr-3" type="reset">Clear Form</button>
             <button class="btn btn-success" type=submit>Save Post</button>

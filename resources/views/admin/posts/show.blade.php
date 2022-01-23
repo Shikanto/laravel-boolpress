@@ -14,6 +14,11 @@
                 <h5 class="card-text"><span class="text-muted">Written by: </span><br>{{ $post->user->name }}</h5>
                 <h6 class="text-muted">{{ $post['created_at'] }}</h6>
                 <h6 class="card-text text-muted">Categoria: {{ $post->category->name }}</h6>
+                <h4 class="card-text"> TAGS: <br> 
+                    @foreach ($post->tags as $tag)
+                    <span class="badge bg-primary text-white rounded-pill">{{ $tag->name }}</span>                        
+                    @endforeach    
+                </h4>
                 
             </div>
             <div class="d-flex justify-content-center border-top border-light pt-4">
