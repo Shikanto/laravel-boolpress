@@ -10,9 +10,13 @@
           <p class="card-text" v-html="post.content">
             <!-- {{ post.content }} -->
           </p>
-          <p class="card-text">
-            <small class="text-muted">{{ post.author }}</small>
+          <p class="card-text" v-if="post.category && post.category.name"> <!-- se avessi fatto il check solo post.category.name controlla solo se c'è un campo nome category e non guarda il valore -->
+            <small class="text-muted">Categoria: {{ post.category.name }}</small>
           </p>
+          <p class="card-text" v-else>
+            <small class="text-muted">Categoria: Sconosciuta</small>
+          </p>
+          <h5>Autore: {{post.user.name}}</h5>
         </div>
       </div>
     </div>

@@ -160,6 +160,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: {
@@ -713,11 +717,19 @@ var render = function () {
               domProps: { innerHTML: _vm._s(_vm.post.content) },
             }),
             _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _c("small", { staticClass: "text-muted" }, [
-                _vm._v(_vm._s(_vm.post.author)),
-              ]),
-            ]),
+            _vm.post.category && _vm.post.category.name
+              ? _c("p", { staticClass: "card-text" }, [
+                  _c("small", { staticClass: "text-muted" }, [
+                    _vm._v("Categoria: " + _vm._s(_vm.post.category.name)),
+                  ]),
+                ])
+              : _c("p", { staticClass: "card-text" }, [
+                  _c("small", { staticClass: "text-muted" }, [
+                    _vm._v("Categoria: Sconosciuta"),
+                  ]),
+                ]),
+            _vm._v(" "),
+            _c("h5", [_vm._v("Autore: " + _vm._s(_vm.post.user.name))]),
           ]),
         ]),
       ]),

@@ -30,7 +30,11 @@
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Categoria Post</label>
-            <input type="text" id="category" class="form-control" name="category">
+            <select name="category_id" class="form-control">
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id}}">{{ $category->name }}</option>  
+                @endforeach
+            </select>
         </div>
         <div class="d-flex justify-content-center ">
             <button class="btn btn-dark mr-3" type="reset">Clear Form</button>

@@ -22,7 +22,7 @@
         <div class="mb-3">
             <label for="content" class="form-label">Contenuto Post</label>
             <textarea class="form-control" id="content" rows="5" name="content"
-            value="{{ old('content') ?? $post->content }}"></textarea>
+            >{!! $post->content !!}</textarea>
         </div>
         {{-- <div class="mb-3">
             <label for="author" class="form-label">Autore</label>
@@ -36,8 +36,11 @@
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Categoria Post</label>
-            <input type="text" id="category" class="form-control" name="category"
-            value="{{ old('category') ?? $post->category}}">
+            <select name="category_id" class="form-control">
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id}}" @if($category->id === $post->category_id) selected @endif>{{ $category->name }}</option>  
+                @endforeach
+            </select>
         </div>
         <div class="d-flex justify-content-center ">
             <button class="btn btn-success" type=submit>Save Changes</button>
