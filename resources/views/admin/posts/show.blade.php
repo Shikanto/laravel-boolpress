@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title_page', 'Info Post #' . $post->id)
+@section('title_page', 'Info Post #' . $post->slug)
 
 @section('content')
     <div class="container my-5">
@@ -22,12 +22,12 @@
                 
             </div>
             <div class="d-flex justify-content-center border-top border-light pt-4">
-                <form class="mr-3" action="{{ route('admin.posts.edit', $post->id)}}" method="get">
+                <form class="mr-3" action="{{ route('admin.posts.edit', $post->slug)}}" method="get">
                     @csrf
                                         
                     <button class="btn btn-primary" type= "submit">Modifica Post</button>
                 </form>
-                <form action="{{ route('admin.posts.destroy', $post->id)}}" method="post" class="form-delete">
+                <form action="{{ route('admin.posts.destroy', $post->slug)}}" method="post" class="form-delete">
                     @csrf
                     @method('delete')
                     

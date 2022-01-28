@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('subtitle')->nullable();
             $table->longtext('content');
             $table->string('category')->nullable();
-	        $table->string('coverImg')->default('https://picsum.photos/seed/picsum/500/500');
+	        $table->string('coverImg')->default('https://picsum.photos/seed/picsum/500/500');//??
 	        $table->unsignedBigInteger("author_id");
             $table->foreign("author_id")
                 ->references("id")

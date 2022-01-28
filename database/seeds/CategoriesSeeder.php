@@ -16,7 +16,7 @@ class CategoriesSeeder extends Seeder
 
         foreach ($categories as $category) {
             $new_category = new Category();
-            $new_category->name = $category;
+            $new_category->name = $category; //qui assegno il valore alla chiave name
             $new_category->save();
         }
 

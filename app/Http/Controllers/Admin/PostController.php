@@ -2,21 +2,49 @@
 
 namespace App\Http\Controllers\Admin;
 
+//importo i modelli Category, Post, Tag
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Tag;
+use Illuminate\Support\Str;
+
+
 
 class PostController extends Controller
 {
+
+
+    private function generateSlug($title)
+    {
+        $slug = Str::slug($title);
+
+        $alreadyExists = Post::where("slug", $slug)->first(); //controllo se esiste un post con lo stesso slug
+        $counter = 1; //first() si ferma e prende al primo che trova
+
+        while ($alreadyExists) {
+            $newSlug = $slug . "-" . $counter; //generiamo un nuovo slug
+
+            $alreadyExists = Post::where("slug", $newSlug)->first(); //cerchiamo se nel db esiste già un elemento con il nuovo slug appena creato
+            $counter++;
+
+            if (!$alreadyExists) { // se non è stato trovato alcun post, salvo il nuovo slug dentro la variabile $slug
+                $slug = $newSlug;
+            }
+           
+            
+        }
+        return $slug;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         $postsList = Post::all();
         $categories = Category::all();
 
@@ -36,6 +64,7 @@ class PostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
 
+
         return view("admin.posts.create", [
             "categories" => $categories,
             "tags" => $tags
@@ -51,15 +80,23 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
+        
         $newPost = new Post();
         $newPost->fill($data);
-        $newPost->author_id = Auth::user()->id;
+        unset($newPost->tags);
+        $newPost->slug = $this->generateSlug($data["title"]);
+        
+      
+        $newPost->author_id = Auth::user()->id; //uso la funzione del Model
+        //dd($newPost);
         $newPost->save();
-
-        $newPost->tags()->sync($data["tags"]);
-
-        return redirect()-> route('admin.posts.show', $newPost->id);
+        
+        
+        
+        if(array_key_exists('tags', $data)) {
+            $newPost->tags()->sync($data["tags"]);
+        }
+        return redirect()->route('admin.posts.show', $newPost->slug);
     }
 
     /**
@@ -68,9 +105,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)    {
-        
-        return view("admin.posts.show", compact('post'));
+    public function show($slug)
+    {
+        $post = Post::where("slug", $slug)->first();
+
+        return view("admin.posts.show", compact("post"));
     }
 
     /**
@@ -79,8 +118,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post) {
-        
+    public function edit($slug)
+    {
+        $post = Post::where("slug", $slug)->first();
         $categories = Category::all();
         $tags = Tag::all();
 
@@ -98,15 +138,31 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
-    {
-        $formData=$request->all();
-        $post->update($formData);
+    public function update(Request $request, $slug) {
 
-       
-        $post->tags()->sync($formData['tags']);
+        $post = Post::where("slug", $slug)->first();
+        $formData = $request->all();
+        $oldTitle = $post->title;
+        $titleChanged = $oldTitle !== $formData["title"];
 
-        return redirect()->route('admin.posts.show', $post->id);
+        /* $post->update($formData); */
+        $post->fill($formData);
+        unset($post->tags);
+
+        if ($titleChanged) {
+            $post->slug = $this->generateSlug($formData["title"]);
+        }
+
+        $post->save();
+
+
+        if (array_key_exists("tags", $formData)) {
+            $post->tags()->sync($formData["tags"]);
+        } else {
+            $post->tags()->detach();
+        }
+
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
@@ -115,9 +171,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($slug)
     {
+        $post = Post::where("slug", $slug)->first();
+        $post->tags()->detach(); //se non scrivo questa riga avrò un errore di integrity perchè devo detachare la foreign key prima di cancellare il post
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with(["status" => "Post cancellato correttamente"]);
     }
 }

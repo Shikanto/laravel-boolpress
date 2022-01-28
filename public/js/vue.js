@@ -117,14 +117,20 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       helloMsg: "Benvenuto al Blog che ancora deve esistere",
-      postsList: []
+      postsList: [],
+      currentPage: 1,
+      //pagina default dove visualizzare inzialmente
+      lastPage: null // indica e capiamo quante pagine ci sono in totale
+
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     window.axios.get("/api/posts").then(function (resp) {
-      _this.postsList = resp.data;
+      _this.postsList = resp.data.data;
+      _this.currentPage = resp.data.current_page;
+      _this.lastPage = resp.data.lastPage;
     });
   }
 });
