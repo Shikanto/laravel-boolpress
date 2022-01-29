@@ -26,11 +26,13 @@
                         <li class="mb-3"><h4 class="mb-2">Autore: </h4>{{ $info_post->user->name}}</li>
                         {{-- <li class="mb-3"><h4 class="mb-2">Categoria: </h4>{{ $info_post['category']}}</li> --}}
                     </ul>
+                    
                     <button class="btn btn-primary"><a class="text-light" href="{{ route('admin.posts.show', $info_post->slug)}}">Dettagli Post</a></button>
                     <button class="btn btn-secondary"><a class="text-light" href="{{ route('admin.posts.edit',  $info_post->slug )}}">Modifica Post</a></button>
 
                      <hr>   
                     @endforeach
+                    {!! $postsList->links() !!} 
                 </div>
             </div>
         </div>

@@ -45,7 +45,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $postsList = Post::all();
+        $postsList = Post::paginate(4);
         $categories = Category::all();
 
         return view('admin.posts.home', [
