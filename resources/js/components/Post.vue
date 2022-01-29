@@ -8,7 +8,7 @@
         <div class="card-body">
           <h3 class="card-title">{{ post.title }}</h3>
           <p class="card-text" v-html="post.content">
-            <!-- {{ post.content }} -->
+            {{ post.content }}
           </p>
           <p class="card-text" v-if="post.category && post.category.name"> <!-- se avessi fatto il check solo post.category.name controlla solo se c'è un campo nome category e non guarda il valore -->
             <small class="text-muted">Categoria: {{ post.category.name }}</small>
@@ -24,6 +24,9 @@
             
           </div>
           <h5>Autore: {{post.user.name}}</h5>
+          <button class="btn btn-primary">
+              <router-link class="text-white" :to="{ name: 'posts.show', params: {slug: post.slug} }">Vai al Post</router-link>
+          </button>
         </div>
       </div>
     </div>

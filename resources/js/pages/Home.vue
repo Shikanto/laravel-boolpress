@@ -1,6 +1,6 @@
 <template>
-    <div class="container text-center">
-        <h1>{{ helloMsg }}</h1>   
+    <div>
+        HomePage
         <Post v-for="post in postsList" :key="post.id" :post="post">
         </Post>
         <div class="d-flex justify-content-center">
@@ -26,27 +26,20 @@
 
         </div>
     </div>
-   
-    
-   
-   
 </template>
-
 <script>
-import Post from "./partials/Post.vue";
+import Post from "../components/Post.vue"
 
 export default {
-    name:"App",
     components: {Post},
     data() {
         return {
-            helloMsg:"Benvenuto al Blog che ancora deve esistere",
             postsList: [],
             currentPage:1, //pagina default dove visualizzare inzialmente
             lastPage:null // indica e capiamo quante pagine ci sono in totale
         };
     },
-    methods: {
+     methods: {
         getData(page = 1) {
            window.axios.get("/api/posts?page=" + page).then((resp) => {
             this.postsList = resp.data.data;
@@ -62,7 +55,6 @@ export default {
     },
 }
 </script>
-
 <style>
     
 </style>
