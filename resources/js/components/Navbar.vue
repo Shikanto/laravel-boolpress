@@ -3,8 +3,8 @@
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/">Bool-Press</router-link>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse justify-content-end " id="navbarNav" >
+        <ul class="navbar-nav m-0">
           <li class="nav-item">
             <router-link class="nav-link active" aria-current="page" :to="{name: 'home'}">Home</router-link>
           </li>

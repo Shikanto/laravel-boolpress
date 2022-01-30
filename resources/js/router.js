@@ -6,6 +6,8 @@ import About from "./pages/About.vue";
 import Contact from "./pages/Contact.vue";
 import NotFound from "./pages/NotFound.vue";
 import PostsShow from "./pages/posts/Show.vue";
+import CategoryShow from "./pages/categories/Show.vue";
+
 
 Vue.use(VueRouter);
 
@@ -33,10 +35,16 @@ const router = new VueRouter({
             component: PostsShow
         },
         {
+            path: "/categories/:category",
+            name: "categories.show",
+            component: CategoryShow
+        },
+        {
             path: "/*", //rotta generica
             name: "not-found",
             component: NotFound,
         },
+       
     ]
 
 });

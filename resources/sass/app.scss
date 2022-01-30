@@ -5,4 +5,9 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap'; utiliziamo questo import in caso volessimo cambiare qualcosa nel sass di bootstrap
+@import '~bootstrap/dist/css/bootstrap.min.css'; // uso questo in  modo che la compilazione si apiù veloce difatti carico il file css già compilato 
+
+.router-link-exact-active{
+    color: $cyan !important;
+}

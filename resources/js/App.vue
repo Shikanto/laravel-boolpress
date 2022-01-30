@@ -2,7 +2,7 @@
     <div class="container text-center">
         <!-- creare componente Navbar -->
         <Navbar></Navbar>
-        <h1>{{ helloMsg }}</h1>   
+        <h1 class="my-3">{{ helloMsg }}</h1>   
         <router-view></router-view>
         
         
