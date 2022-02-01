@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <h1>Creazione Post</h1>
-    <form action="{{ route("admin.posts.store" )}}" method="post">
+    <form action="{{ route("admin.posts.store" )}}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -26,7 +26,7 @@
         </div> --}}
         <div class="mb-3">
             <label for="coverImg" class="form-label">Copertina Post</label>
-            <input type="text" id="coverImg" class="form-control" name="coverImg">
+            <input type="file" id="coverImg" class="form-control" name="coverImg">
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Categoria Post</label>

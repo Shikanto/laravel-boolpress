@@ -5,7 +5,8 @@
 @section('content')
 <div class="container">
     <h1>Modifica Post</h1>
-    <form action="{{ route("admin.posts.update", $post->slug)}}" method="post">
+    <form action="{{ route("admin.posts.update", $post->slug)}}" method="post"
+        enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -31,8 +32,8 @@
         </div> --}}
         <div class="mb-3">
             <label for="coverImg" class="form-label">Copertina Post</label>
-            <input type="text" id="coverImg" class="form-control" name="coverImg"
-            value="{{ old('coverImg') ?? $post->coverImg}}">
+            <input type="file" id="coverImg" class="form-control" name="coverImg"
+            value="{{ $post->coverImg}}">
         </div>
         <div class="mb-3">
             <label class="form-label">Categoria Post</label>

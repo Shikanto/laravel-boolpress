@@ -6,7 +6,11 @@
     <div class="container my-5">
         
         <div class="card mb-3 p-4 bg-dark text-light">
-            <img src="{{$post['coverImg']}}" class="card-img-top border border-light" alt="...">
+            
+                
+        
+            
+            <img src={{ asset('storage/' . $post->coverImg)}}  class="card-img-top border border-light" alt="...">       
             <div class="card-body py-5">
                 <h2>{{ strtoupper($post['title']) }}</h2>
                 <h4 class="card-title">{{ strtoupper($post['subtitle'])}}</h4>

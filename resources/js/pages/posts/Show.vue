@@ -4,7 +4,7 @@
             <div class="card w-100" style="width: 18rem;">
                 <h2>{{post.title}}</h2>
                 <h3>{{post.subtitle}}</h3>
-                <img :src="post.coverImg" class="card-img-top" alt="...">
+                <img :src="'/storage/' + post.coverImg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text" v-html="post.content">{{ post.content }}</p>
                     <!-- <h5>Autore: {{post.user.name}}</h5> -->

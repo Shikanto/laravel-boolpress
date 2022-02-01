@@ -2185,7 +2185,7 @@ var render = function () {
           _vm._v(" "),
           _c("img", {
             staticClass: "card-img-top",
-            attrs: { src: _vm.post.coverImg, alt: "..." },
+            attrs: { src: "/storage/" + _vm.post.coverImg, alt: "..." },
           }),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [

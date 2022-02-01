@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Tag;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -86,6 +87,9 @@ class PostController extends Controller
         unset($newPost->tags);
         $newPost->slug = $this->generateSlug($data["title"]);
         
+        if ($request->file("coverImg")) {
+            $newPost->coverImg = Storage::disk('public')->put("posts", $data["coverImg"]);
+        }
       
         $newPost->author_id = Auth::user()->id; //uso la funzione del Model
         //dd($newPost);
@@ -144,10 +148,21 @@ class PostController extends Controller
         $formData = $request->all();
         $oldTitle = $post->title;
         $titleChanged = $oldTitle !== $formData["title"];
+        $oldCoverImg = $post->coverImg;
 
+        
         /* $post->update($formData); */
         $post->fill($formData);
         unset($post->tags);
+
+        if ($request->file("coverImg")) {
+            if($oldCoverImg){
+              Storage::delete($oldCoverImg);
+            }
+            
+            $post->coverImg = Storage::put("posts", $formData["coverImg"]); //qui prendo il file che abbiamo caricato nel form lo metterà in app/public e crea una cartella posts e ci salverà dentro il file
+            //$post->coverImg = $request->file("coverImg")->store("posts");
+        }
 
         if ($titleChanged) {
             $post->slug = $this->generateSlug($formData["title"]);
