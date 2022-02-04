@@ -2,7 +2,7 @@
   <div class="card mb-3 w-100">
     <div class="row g-0">
       <div class="col-md-4 d-flex align-items-center ">
-        <img :src="post.coverImg" class="img-fluid rounded-start w-100 h-100" alt="..." />
+        <img :src="'/storage/' + post.coverImg" class="img-fluid rounded-start w-100 h-100" alt="..." />
       </div>
       <div class="col-md-8 ">
         <div class="card-body">

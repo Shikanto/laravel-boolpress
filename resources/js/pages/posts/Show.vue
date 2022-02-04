@@ -4,7 +4,7 @@
             <div class="card w-100" style="width: 18rem;">
                 <h2>{{post.title}}</h2>
                 <h3>{{post.subtitle}}</h3>
-                <img :src="'/storage/' + post.coverImg" class="card-img-top" alt="...">
+                <img :src="post.coverImg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text" v-html="post.content">{{ post.content }}</p>
                     <!-- <h5>Autore: {{post.user.name}}</h5> -->
@@ -28,6 +28,7 @@ export default {
             const urlPost = "/api/posts/" + this.$route.params.slug; //genera un url dipendete dallo slug che poi passa per fare la chiamata axios
             window.axios.get( urlPost ).then((resp) => {
                 this.post = resp.data;
+    
             })
         },
     },

@@ -1782,7 +1782,7 @@ var render = function () {
       _c("div", { staticClass: "col-md-4 d-flex align-items-center " }, [
         _c("img", {
           staticClass: "img-fluid rounded-start w-100 h-100",
-          attrs: { src: _vm.post.coverImg, alt: "..." },
+          attrs: { src: "/storage/" + _vm.post.coverImg, alt: "..." },
         }),
       ]),
       _vm._v(" "),
@@ -2185,7 +2185,7 @@ var render = function () {
           _vm._v(" "),
           _c("img", {
             staticClass: "card-img-top",
-            attrs: { src: "/storage/" + _vm.post.coverImg, alt: "..." },
+            attrs: { src: _vm.post.coverImg, alt: "..." },
           }),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
